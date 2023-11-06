@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 
-	todo "github.com/umyt-king/gitTutorial"
+	todo "github.com/umyt-king/todoCLI"
 )
 
 const (
