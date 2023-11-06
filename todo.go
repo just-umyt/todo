@@ -3,6 +3,7 @@ package todo
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"time"
@@ -39,7 +40,7 @@ func (todos *Todos) Complete(in int) error {
 
 func (todos *Todos) Delete(in int) error {
 	ls := *todos
-	
+
 	if in <= 0 || in > len(ls) {
 		return errors.New("invalid index")
 	}
@@ -77,4 +78,11 @@ func (todos *Todos) Store(filename string) error {
 
 	return os.WriteFile(filename, data, 0644)
 
+}
+
+func (todos *Todos) Print() {
+	for i, item := range *todos {
+		i++
+		fmt.Printf("%d - %s\n", i, item.Name)
+	}
 }

@@ -1,14 +1,20 @@
 [
   {
     "Name": "Sample todo",
-    "Done": true,
-    "CreatedAt": "2023-11-06T23:07:42.8887746+05:00",
-    "CompletedAt": "2023-11-06 T23:11:55.5566919+05:00"
+    "Done": false,
+    "CreatedAt": "2023-11-06T23:25:28.0933773+05:00",
+    "CompletedAt": "0001-01-01T00:00:00Z"
   },
   {
     "Name": "Sample todo",
     "Done": false,
-    "CreatedAt": "2023-11-06T23:14:41.3567673+05:00",
+    "CreatedAt": "2023-11-06T23:25:28.0933773+05:00",
+    "CompletedAt": "0001-01-01T00:00:00Z"
+  },
+  {
+    "Name": "Sample todo",
+    "Done": false,
+    "CreatedAt": "2023-11-06T23:25:28.0933773+05:00",
     "CompletedAt": "0001-01-01T00:00:00Z"
   }
 ]
