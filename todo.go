@@ -3,15 +3,16 @@ package todo
 import (
 	"encoding/json"
 	"errors"
+	"io/ioutil"
 	"os"
 	"time"
 )
 
 type item struct {
-	Name        string    `json : "Name"`
-	Done        bool      `json : "Done"`
-	CreatedAt   time.Time `json : "CreatedAt"`
-	CompletedAt time.Time `json : "CompletedAt"`
+	Name        string
+	Done        bool
+	CreatedAt   time.Time
+	CompletedAt time.Time
 }
 
 type Todos []item
@@ -37,19 +38,24 @@ func (todos *Todos) Complete(in int) error {
 }
 
 func (todos *Todos) Delete(in int) error {
-	if in <= 0 || in > len(*todos) {
+	ls := *todos
+	
+	if in <= 0 || in > len(ls) {
 		return errors.New("invalid index")
 	}
 
-	*todos = append((*todos)[:in-1], (*todos)[in:]...)
+	*todos = append(ls[:in-1], ls[in:]...)
 
 	return nil
 }
 
 func (todos *Todos) Load(filename string) error {
-	file, err := os.ReadFile(filename)
+	file, err := ioutil.ReadFile(filename)
 	if err != nil {
-		return errors.New("cant open the file")
+		if errors.Is(err, os.ErrNotExist) {
+			return nil
+		}
+		return err
 	}
 
 	if len(file) == 0 {
