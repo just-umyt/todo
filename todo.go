@@ -1,4 +1,4 @@
-package todoCLI
+package todo
 
 import (
 	"encoding/json"
