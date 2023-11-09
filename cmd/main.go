@@ -18,7 +18,6 @@ func main() {
 	del := flag.Int("del", 0, "delete a todo")
 	list := flag.Bool("list", false, "list all todos")
 
-
 	flag.Parse()
 
 	todos := &todo.Todos{}
