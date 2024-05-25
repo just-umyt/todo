@@ -19,6 +19,7 @@ func main() {
 	ls := flag.Bool("ls", false, "show a list")
 	complete := flag.Int("comp", 0, "mark a todo as complete")
 	del := flag.Int("del", 0, "delete a todo")
+	flags := flag.Bool("flags", false, "show all flags")
 
 	flag.Parse()
 
@@ -42,6 +43,10 @@ func main() {
 		todos.Store(todoFile)
 	case *ls:
 		todos.Print()
+	case *flags:
+		flag.VisitAll(func(f *flag.Flag) {
+			fmt.Println("Flag: ", f.Name, " | Description:  ", f.Usage,)
+		})
 	default:
 		fmt.Fprintln(os.Stdout, "invalid command")
 		os.Exit(1)
